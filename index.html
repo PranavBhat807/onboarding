@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Products Navbar</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/intro.js/introjs.css">
+</head>
+
+<body>
+    <nav class="navbar">
+        <ul class="navbar-list left">
+            <li><a href="#">Home</a></li>
+            <li><a class="Home" href="#">Product</a></li>
+            <li><a class="Pricing" href="#">Pricing</a></li>
+        </ul>
+        <ul class="navbar-list right">
+            <li><a href="#">Contact Us</a></li>
+        </ul>
+    </nav>
+
+    <button id="demo" class="demo-tour-btn">Have a demo tour</button>
+    <div class="text">
+        <h1>This is Demo Tour</h1>
+    </div>
+
+    <button class="glitch">
+        Subscribe
+    </button>
+
+
+
+
+    <script src="https://unpkg.com/intro.js/intro.js"></script>
+    <script>
+        const button = document.getElementById("demo");
+        button.addEventListener('click', () => {
+            introJs().setOptions({
+                tooltipClass: 'customTooltip',
+                steps: [{
+                    element: document.querySelector('.Home'),
+                    intro: "Know our Products"
+                },
+                {
+                    element: document.querySelector(".Pricing"),
+                    intro: "Reliable Pricing"
+                }]
+            }).start();
+        });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
+        integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/TextPlugin.min.js"></script>
+    <script>
+        const timeline = gsap.timeline();
+
+        // Add tweens to the timeline
+        timeline.to(".navbar", {
+            y: 60,
+            duration: 2,
+            ease: "bounce",
+            bounce: {
+                strength: 5,
+                endAtStart: true
+            }
+        });
+
+        timeline.to("#demo", { // Add tween to change button color
+            backgroundColor: "blue",
+            duration: 2
+        });
+
+        // You can add more tweens as needed...
+
+        // Play the timeline
+        timeline.play();
+
+        gsap.registerPlugin(TextPlugin);
+        gsap.to("h1", {
+            duration: 2,
+            text: "Enjoyed your tour?",
+            ease: "ease-in",
+        });
+
+    </script>
+</body>
+
+</html>
